@@ -40,7 +40,6 @@ import java.util.concurrent.CountDownLatch;
  */
 public class CropImageActivity extends MonitoredActivity
 {
-
 	private final static int IMAGE_MIN_SIZE = 512;
 	private static final String TAG = "CropImageActivity";
 
@@ -49,7 +48,7 @@ public class CropImageActivity extends MonitoredActivity
 	private boolean mDoFaceDetection = true;
 	private boolean mCircleCrop = false;
 	private boolean mScale;
-	// These options specifiy the output image size and whether we should
+	// These options specify the output image size and whether we should
 	// scale the output to fit it (or just crop it).
 	private boolean mScaleUp = true;
 
@@ -132,9 +131,9 @@ public class CropImageActivity extends MonitoredActivity
 				mOutputY = IMAGE_MIN_SIZE;
 			}
 
-			if (extras.containsKey(Cropper.CROP_AREA_HIGHTLIGHT_COLOR_RES_ID))
+			if (extras.containsKey(Cropper.CROP_AREA_HIGHLIGHT_COLOR_RES_ID))
 			{
-				highlightColorResId = extras.getInt(Cropper.CROP_AREA_HIGHTLIGHT_COLOR_RES_ID);
+				highlightColorResId = extras.getInt(Cropper.CROP_AREA_HIGHLIGHT_COLOR_RES_ID);
 			}
 			else
 			{
@@ -287,7 +286,7 @@ public class CropImageActivity extends MonitoredActivity
 
 	private Bitmap getBitmap(Uri uri)
 	{
-		InputStream in = null;
+		InputStream in;
 		try
 		{
 			in = mContentResolver.openInputStream(uri);
@@ -325,7 +324,6 @@ public class CropImageActivity extends MonitoredActivity
 
 	private void startFaceDetection()
 	{
-
 		if (isFinishing())
 		{
 			return;
@@ -538,7 +536,6 @@ public class CropImageActivity extends MonitoredActivity
 	@Override
 	protected void onPause()
 	{
-
 		super.onPause();
 		BitmapManager.instance().cancelThreadDecoding(mDecodingThreads);
 	}
@@ -613,7 +610,6 @@ public class CropImageActivity extends MonitoredActivity
 		// Create a default HightlightView if we found no face in the picture.
 		private void makeDefault()
 		{
-
 			HighlightView hv = new HighlightView(mImageView);
 
 			int width = mBitmap.getWidth();
@@ -774,7 +770,7 @@ public class CropImageActivity extends MonitoredActivity
 	{
 		try
 		{
-			String storageDirectory = "";
+			String storageDirectory;
 			String state = Environment.getExternalStorageState();
 			if (Environment.MEDIA_MOUNTED.equals(state))
 			{
@@ -788,7 +784,6 @@ public class CropImageActivity extends MonitoredActivity
 			float remaining = ((float) stat.getAvailableBlocks()
 				* (float) stat.getBlockSize()) / 400000F;
 			return (int) remaining;
-			//}
 		}
 		catch (Exception ex)
 		{
@@ -799,5 +794,3 @@ public class CropImageActivity extends MonitoredActivity
 		}
 	}
 }
-
-

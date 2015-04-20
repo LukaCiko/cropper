@@ -5,6 +5,6 @@
 		android:state_pressed="true"
 		android:drawable="@drawable/bg_blue_pressed"/>
 
-	<item
-		android:drawable="@drawable/bg_blue"/>
+	<item android:drawable="@drawable/bg_blue"/>
+
 </selector>

@@ -22,13 +22,13 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 
 abstract class ImageViewTouchBase extends ImageView
 {
-
 	@SuppressWarnings("unused")
 	private static final String TAG = "ImageViewTouchBase";
 
@@ -48,7 +48,7 @@ abstract class ImageViewTouchBase extends ImageView
 	// to the full size image.
 	protected Matrix mSuppMatrix = new Matrix();
 
-	// This is the final matrix which is computed as the concatentation
+	// This is the final matrix which is computed as the concatenation
 	// of the base matrix and the supplementary matrix.
 	private final Matrix mDisplayMatrix = new Matrix();
 
@@ -79,7 +79,6 @@ abstract class ImageViewTouchBase extends ImageView
 
 	public void setRecycler(Recycler r)
 	{
-
 		mRecycler = r;
 	}
 
@@ -89,7 +88,6 @@ abstract class ImageViewTouchBase extends ImageView
 	protected void onLayout(boolean changed, int left, int top,
 	                        int right, int bottom)
 	{
-
 		super.onLayout(changed, left, top, right, bottom);
 		mLeft = left;
 		mRight = right;
@@ -111,9 +109,8 @@ abstract class ImageViewTouchBase extends ImageView
 	}
 
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event)
+	public boolean onKeyDown(int keyCode, @NonNull KeyEvent event)
 	{
-
 		if (keyCode == KeyEvent.KEYCODE_BACK && getScale() > 1.0f)
 		{
 			// If we're zoomed in, pressing Back jumps out to show the entire
@@ -321,7 +318,6 @@ abstract class ImageViewTouchBase extends ImageView
 
 		float w = bitmap.getWidth();
 		float h = bitmap.getHeight();
-		int rotation = bitmap.getRotation();
 		matrix.reset();
 
 		// We limit up-scaling to 2x otherwise the result may look bad if it's
@@ -356,7 +352,6 @@ abstract class ImageViewTouchBase extends ImageView
 	// rather than the current 1024x768, this should be changed down to 200%.
 	protected float maxZoom()
 	{
-
 		if (mBitmapDisplayed.getBitmap() == null)
 		{
 			return 1F;
@@ -364,13 +359,11 @@ abstract class ImageViewTouchBase extends ImageView
 
 		float fw = (float) mBitmapDisplayed.getWidth() / (float) mThisWidth;
 		float fh = (float) mBitmapDisplayed.getHeight() / (float) mThisHeight;
-		float max = Math.max(fw, fh) * 4;
-		return max;
+		return Math.max(fw, fh) * 4;
 	}
 
 	protected void zoomTo(float scale, float centerX, float centerY)
 	{
-
 		if (scale > mMaxZoom)
 		{
 			scale = mMaxZoom;
@@ -387,7 +380,6 @@ abstract class ImageViewTouchBase extends ImageView
 	protected void zoomTo(final float scale, final float centerX,
 	                      final float centerY, final float durationMs)
 	{
-
 		final float incrementPerMs = (scale - getScale()) / durationMs;
 		final float oldScale = getScale();
 		final long startTime = System.currentTimeMillis();
@@ -421,7 +413,6 @@ abstract class ImageViewTouchBase extends ImageView
 
 	protected void zoomIn()
 	{
-
 		zoomIn(SCALE_RATE);
 	}
 
@@ -479,13 +470,11 @@ abstract class ImageViewTouchBase extends ImageView
 
 	protected void postTranslate(float dx, float dy)
 	{
-
 		mSuppMatrix.postTranslate(dx, dy);
 	}
 
 	protected void panBy(float dx, float dy)
 	{
-
 		postTranslate(dx, dy);
 		setImageMatrix(getImageViewMatrix());
 	}

@@ -5,33 +5,51 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-public class Cropper
+/**
+ * Image cropping library for Android.
+ */
+@SuppressWarnings("UnusedDeclaration")
+public final class Cropper
 {
-	public static final int PICK = 1001;
-	public static final int CROP = 1002;
-
-	public static final String IMAGE_PATH = "image-path";
+	/**
+	 * Request code for {@code pick}.
+	 */
+	public static final int PICK = 23001;
+	/**
+	 * Request code for {@code crop}.
+	 */
+	public static final int CROP = 23002;
+	/**
+	 * Name of the cropped bitmap file path string extra return after {@code crop}.
+	 */
 	public static final String SAVE_PATH = "save-path";
-	public static final String SCALE = "scale";
-	public static final String ORIENTATION_IN_DEGREES = "orientation_in_degrees";
-	public static final String ASPECT_X = "aspectX";
-	public static final String ASPECT_Y = "aspectY";
-	public static final String OUTPUT_X = "outputX";
-	public static final String OUTPUT_Y = "outputY";
-	public static final String SCALE_UP_IF_NEEDED = "scaleUpIfNeeded";
-	public static final String CIRCLE_CROP = "circleCrop";
-	public static final String LAYOUT_RES_ID = "layoutResourceId";
-	public static final String CROP_AREA_HIGHTLIGHT_COLOR_RES_ID = "highlightColor";
-	public static final String CROP_AREA_HIGHLIGHT_SELECTED_COLOR_RES_ID = "highlightSelectedColor";
-	public static final String CROP_AREA_VERTICAL_ICON_RES_ID = "verticalIcon";
-	public static final String CROP_AREA_HORIZONTAL_ICON_RES_ID = "horizontalIcon";
-	public static final String CROP_AREA_BORDER_SIZE_DIMEN_RES_ID = "borderSize";
+
+	static final String IMAGE_PATH = "image-path";
+	static final String SCALE = "scale";
+	static final String ORIENTATION_IN_DEGREES = "orientation_in_degrees";
+	static final String ASPECT_X = "aspectX";
+	static final String ASPECT_Y = "aspectY";
+	static final String OUTPUT_X = "outputX";
+	static final String OUTPUT_Y = "outputY";
+	static final String SCALE_UP_IF_NEEDED = "scaleUpIfNeeded";
+	static final String CIRCLE_CROP = "circleCrop";
+	static final String LAYOUT_RES_ID = "layoutResourceId";
+	static final String CROP_AREA_HIGHLIGHT_COLOR_RES_ID = "highlightColor";
+	static final String CROP_AREA_HIGHLIGHT_SELECTED_COLOR_RES_ID = "highlightSelectedColor";
+	static final String CROP_AREA_VERTICAL_ICON_RES_ID = "verticalIcon";
+	static final String CROP_AREA_HORIZONTAL_ICON_RES_ID = "horizontalIcon";
+	static final String CROP_AREA_BORDER_SIZE_DIMEN_RES_ID = "borderSize";
 
 	private Cropper()
 	{
-
+		// Hiding constructor
 	}
 
+	/**
+	 * Launch an activity to pick an image. The result is returned with request code {@code PICK}.
+	 *
+	 * @param activity Activity that will get the result.
+	 */
 	public static void pick(Activity activity)
 	{
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -39,16 +57,27 @@ public class Cropper
 		activity.startActivityForResult(intent, PICK);
 	}
 
+	/**
+	 * Launch an activity to pick an image. The result is returned with request code {@code PICK}.
+	 *
+	 * @param context     Application or other context.
+	 * @param imageSource URI of the image being cropped.
+	 * @param savePath    URI used for saving the cropped image.
+	 */
 	public static Builder crop(Context context, Uri imageSource, Uri savePath)
 	{
 		return new Builder(context, imageSource, savePath);
 	}
 
+	/**
+	 * An builder providing fluent API to specify additional configuration. Use {@code crop} to
+	 * get an instance of it.
+	 */
 	public static class Builder
 	{
 		private Intent intent;
 
-		public Builder(Context context, Uri imageSource, Uri savePath)
+		Builder(Context context, Uri imageSource, Uri savePath)
 		{
 			this.intent = new Intent(context, CropImageActivity.class);
 			this.intent.putExtra(IMAGE_PATH, imageSource.toString());
@@ -89,7 +118,7 @@ public class Cropper
 
 		public Builder cropAreaHighlightColorResId(int id)
 		{
-			this.intent.putExtra(CROP_AREA_HIGHTLIGHT_COLOR_RES_ID, id);
+			this.intent.putExtra(CROP_AREA_HIGHLIGHT_COLOR_RES_ID, id);
 			return this;
 		}
 
@@ -117,10 +146,14 @@ public class Cropper
 			return this;
 		}
 
+		/**
+		 * Start the image cropping activity.
+		 *
+		 * @param activity Activity that will get the result.
+		 */
 		public void start(Activity activity)
 		{
 			activity.startActivityForResult(intent, CROP);
 		}
 	}
 }
-

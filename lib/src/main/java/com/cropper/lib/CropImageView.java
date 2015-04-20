@@ -3,6 +3,7 @@ package com.cropper.lib;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -20,56 +21,9 @@ class CropImageView extends ImageViewTouchBase
 
 	List<HighlightView> mHighlightViews = new ArrayList<>();
 
-	private ScaleGestureDetector.SimpleOnScaleGestureListener mOnScaleGestureListener = new ScaleGestureDetector.SimpleOnScaleGestureListener()
-	{
-		@Override
-		public boolean onScaleBegin(ScaleGestureDetector detector)
-		{
-			if (mHighlightViews.size() > 0)
-			{
-				mHighlightViews.get(0).setMode(HighlightView.ModifyMode.Grow);
-			}
-			return true;
-		}
-
-		@Override
-		public boolean onScale(ScaleGestureDetector detector)
-		{
-			if (mHighlightViews.size() > 0)
-			{
-				HighlightView highlightView = mHighlightViews.get(0);
-				int width = highlightView.getCropRect().width();
-				int height = highlightView.getCropRect().height();
-
-				int newWidth = (int) (width * detector.getScaleFactor());
-				int newHeight = (int) (height * detector.getScaleFactor());
-
-				int dx = newWidth - width;
-				int dy = newHeight - height;
-
-				highlightView.growBy(dx, dy);
-			}
-			return true;
-		}
-
-		@Override
-		public void onScaleEnd(ScaleGestureDetector detector)
-		{
-			super.onScaleEnd(detector);
-			if (mHighlightViews.size() > 0)
-			{
-				HighlightView view = mHighlightViews.get(0);
-				view.setMode(HighlightView.ModifyMode.None);
-				centerBasedOnHighlightView(view);
-			}
-		}
-	};
-
 	@Override
-	protected void onLayout(boolean changed, int left, int top,
-	                        int right, int bottom)
+	protected void onLayout(boolean changed, int left, int top, int right, int bottom)
 	{
-
 		super.onLayout(changed, left, top, right, bottom);
 		if (mBitmapDisplayed.getBitmap() != null)
 		{
@@ -87,16 +41,58 @@ class CropImageView extends ImageViewTouchBase
 
 	public CropImageView(Context context, AttributeSet attrs)
 	{
-
 		super(context, attrs);
 		this.mContext = context;
+		ScaleGestureDetector.SimpleOnScaleGestureListener mOnScaleGestureListener = new ScaleGestureDetector.SimpleOnScaleGestureListener()
+		{
+			@Override
+			public boolean onScaleBegin(ScaleGestureDetector detector)
+			{
+				if (mHighlightViews.size() > 0)
+				{
+					mHighlightViews.get(0).setMode(HighlightView.ModifyMode.Grow);
+				}
+				return true;
+			}
+
+			@Override
+			public boolean onScale(ScaleGestureDetector detector)
+			{
+				if (mHighlightViews.size() > 0)
+				{
+					HighlightView highlightView = mHighlightViews.get(0);
+					int width = highlightView.getCropRect().width();
+					int height = highlightView.getCropRect().height();
+
+					int newWidth = (int) (width * detector.getScaleFactor());
+					int newHeight = (int) (height * detector.getScaleFactor());
+
+					int dx = newWidth - width;
+					int dy = newHeight - height;
+
+					highlightView.growBy(dx, dy);
+				}
+				return true;
+			}
+
+			@Override
+			public void onScaleEnd(ScaleGestureDetector detector)
+			{
+				super.onScaleEnd(detector);
+				if (mHighlightViews.size() > 0)
+				{
+					HighlightView view = mHighlightViews.get(0);
+					view.setMode(HighlightView.ModifyMode.None);
+					centerBasedOnHighlightView(view);
+				}
+			}
+		};
 		mScaleGestureDetector = new ScaleGestureDetector(context, mOnScaleGestureListener);
 	}
 
 	@Override
 	protected void zoomTo(float scale, float centerX, float centerY)
 	{
-
 		super.zoomTo(scale, centerX, centerY);
 		for (HighlightView hv : mHighlightViews)
 		{
@@ -108,7 +104,6 @@ class CropImageView extends ImageViewTouchBase
 	@Override
 	protected void zoomIn()
 	{
-
 		super.zoomIn();
 		for (HighlightView hv : mHighlightViews)
 		{
@@ -120,7 +115,6 @@ class CropImageView extends ImageViewTouchBase
 	@Override
 	protected void zoomOut()
 	{
-
 		super.zoomOut();
 		for (HighlightView hv : mHighlightViews)
 		{
@@ -132,7 +126,6 @@ class CropImageView extends ImageViewTouchBase
 	@Override
 	protected void postTranslate(float deltaX, float deltaY)
 	{
-
 		super.postTranslate(deltaX, deltaY);
 		for (int i = 0; i < mHighlightViews.size(); i++)
 		{
@@ -172,7 +165,7 @@ class CropImageView extends ImageViewTouchBase
 	}
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event)
+	public boolean onTouchEvent(@NonNull MotionEvent event)
 	{
 
 		CropImageActivity cropImage = (CropImageActivity) mContext;
@@ -341,7 +334,7 @@ class CropImageView extends ImageViewTouchBase
 	}
 
 	@Override
-	protected void onDraw(Canvas canvas)
+	protected void onDraw(@NonNull Canvas canvas)
 	{
 
 		super.onDraw(canvas);

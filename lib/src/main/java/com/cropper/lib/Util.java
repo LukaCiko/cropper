@@ -27,11 +27,8 @@ import java.io.Closeable;
 /**
  * Collection of utility functions used in this package.
  */
-public class Util
+final class Util
 {
-
-	private static final String TAG = "db.Util";
-
 	private Util()
 	{
 
@@ -62,7 +59,7 @@ public class Util
 		int deltaY = source.getHeight() - targetHeight;
 		if (!scaleUp && (deltaX < 0 || deltaY < 0))
 		{
-	        /*
+		    /*
              * In this case the bitmap is smaller, at least in one dimension,
              * than the target.  Transform it by placing as much of the image
              * as possible into the target and leaving the top/bottom or
@@ -260,8 +257,7 @@ public class Util
 		Matrix matrix = new Matrix();
 		// setup rotation degree
 		matrix.postRotate(degree);
-		Bitmap bmp = Bitmap.createBitmap(src, 0, 0, src.getWidth(), src.getHeight(), matrix, true);
-		return bmp;
+		return Bitmap.createBitmap(src, 0, 0, src.getWidth(), src.getHeight(), matrix, true);
 	}
 
 	public static int getOrientationInDegree(Activity activity)

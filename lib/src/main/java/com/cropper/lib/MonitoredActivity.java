@@ -21,15 +21,13 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MonitoredActivity extends Activity
+class MonitoredActivity extends Activity
 {
-
 	private final ArrayList<LifeCycleListener> mListeners =
 		new ArrayList<LifeCycleListener>();
 
 	public static interface LifeCycleListener
 	{
-
 		public void onActivityCreated(MonitoredActivity activity);
 
 		public void onActivityDestroyed(MonitoredActivity activity);
@@ -45,7 +43,6 @@ public class MonitoredActivity extends Activity
 
 	public static class LifeCycleAdapter implements LifeCycleListener
 	{
-
 		public void onActivityCreated(MonitoredActivity activity)
 		{
 
@@ -79,21 +76,18 @@ public class MonitoredActivity extends Activity
 
 	public void addLifeCycleListener(LifeCycleListener listener)
 	{
-
 		if (mListeners.contains(listener)) return;
 		mListeners.add(listener);
 	}
 
 	public void removeLifeCycleListener(LifeCycleListener listener)
 	{
-
 		mListeners.remove(listener);
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
-
 		super.onCreate(savedInstanceState);
 		for (LifeCycleListener listener : mListeners)
 		{
@@ -104,7 +98,6 @@ public class MonitoredActivity extends Activity
 	@Override
 	protected void onDestroy()
 	{
-
 		super.onDestroy();
 		for (LifeCycleListener listener : mListeners)
 		{
@@ -115,7 +108,6 @@ public class MonitoredActivity extends Activity
 	@Override
 	protected void onStart()
 	{
-
 		super.onStart();
 		for (LifeCycleListener listener : mListeners)
 		{
@@ -126,7 +118,6 @@ public class MonitoredActivity extends Activity
 	@Override
 	protected void onStop()
 	{
-
 		super.onStop();
 		for (LifeCycleListener listener : mListeners)
 		{

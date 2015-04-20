@@ -27,7 +27,6 @@ import android.view.View;
 // space to screen space.
 class HighlightView
 {
-
 	@SuppressWarnings("unused")
 	private static final String TAG = "HighlightView";
 	View mContext;  // The View displaying the image.
@@ -105,7 +104,6 @@ class HighlightView
 
 	protected void draw(Canvas canvas)
 	{
-
 		if (mHidden)
 		{
 			return;
@@ -472,7 +470,6 @@ class HighlightView
 	// Returns the cropping rectangle in image space.
 	public Rect getCropRect()
 	{
-
 		return new Rect((int) mCropRect.left, (int) mCropRect.top,
 			(int) mCropRect.right, (int) mCropRect.bottom);
 	}
@@ -480,7 +477,6 @@ class HighlightView
 	// Maps the cropping rectangle from image space to screen space.
 	private Rect computeLayout()
 	{
-
 		RectF r = new RectF(mCropRect.left, mCropRect.top,
 			mCropRect.right, mCropRect.bottom);
 		mMatrix.mapRect(r);
@@ -490,7 +486,6 @@ class HighlightView
 
 	public void invalidate()
 	{
-
 		mDrawRect = computeLayout();
 	}
 

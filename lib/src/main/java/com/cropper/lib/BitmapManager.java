@@ -39,9 +39,8 @@ import java.util.WeakHashMap;
  * use the add() method. A ThreadSet holds (weak) references to the threads,
  * so you don't need to remove Thread from it if some thread dies.
  */
-public class BitmapManager
+class BitmapManager
 {
-
 	private static final String TAG = "BitmapManager";
 
 	private static enum State
@@ -79,7 +78,6 @@ public class BitmapManager
 
 	public static class ThreadSet implements Iterable<Thread>
 	{
-
 		private final WeakHashMap<Thread, Object> mWeakCollection =
 			new WeakHashMap<Thread, Object>();
 
@@ -117,7 +115,6 @@ public class BitmapManager
 	 */
 	private synchronized ThreadStatus getOrCreateThreadStatus(Thread t)
 	{
-
 		ThreadStatus status = mThreadStatus.get(t);
 		if (status == null)
 		{
@@ -134,20 +131,17 @@ public class BitmapManager
 	private synchronized void setDecodingOptions(Thread t,
 	                                             BitmapFactory.Options options)
 	{
-
 		getOrCreateThreadStatus(t).mOptions = options;
 	}
 
 	synchronized BitmapFactory.Options getDecodingOptions(Thread t)
 	{
-
 		ThreadStatus status = mThreadStatus.get(t);
 		return status != null ? status.mOptions : null;
 	}
 
 	synchronized void removeDecodingOptions(Thread t)
 	{
-
 		ThreadStatus status = mThreadStatus.get(t);
 		status.mOptions = null;
 	}
@@ -158,7 +152,6 @@ public class BitmapManager
 	 */
 	public synchronized void allowThreadDecoding(ThreadSet threads)
 	{
-
 		for (Thread t : threads)
 		{
 			allowThreadDecoding(t);
@@ -167,7 +160,6 @@ public class BitmapManager
 
 	public synchronized void cancelThreadDecoding(ThreadSet threads)
 	{
-
 		for (Thread t : threads)
 		{
 			cancelThreadDecoding(t);
@@ -180,7 +172,6 @@ public class BitmapManager
 	 */
 	public synchronized boolean canThreadDecoding(Thread t)
 	{
-
 		ThreadStatus status = mThreadStatus.get(t);
 		if (status == null)
 		{
@@ -216,7 +207,6 @@ public class BitmapManager
 	 */
 	public synchronized void dump()
 	{
-
 		Iterator<Map.Entry<Thread, ThreadStatus>> i =
 			mThreadStatus.entrySet().iterator();
 
@@ -231,7 +221,6 @@ public class BitmapManager
 
 	public static synchronized BitmapManager instance()
 	{
-
 		if (sManager == null)
 		{
 			sManager = new BitmapManager();
@@ -245,7 +234,6 @@ public class BitmapManager
 	public Bitmap decodeFileDescriptor(FileDescriptor fd,
 	                                   BitmapFactory.Options options)
 	{
-
 		if (options.mCancel)
 		{
 			return null;
