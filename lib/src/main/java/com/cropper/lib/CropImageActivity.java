@@ -147,7 +147,7 @@ public class CropImageActivity extends MonitoredActivity
 			}
 			else
 			{
-				highlightSelectedColorResId = R.color.red;
+				highlightSelectedColorResId = R.color.green;
 			}
 
 			if (extras.containsKey(Cropper.CROP_AREA_HORIZONTAL_ICON_RES_ID))
@@ -156,7 +156,7 @@ public class CropImageActivity extends MonitoredActivity
 			}
 			else
 			{
-				horizontalIconResId = R.drawable.camera_crop_height;
+				horizontalIconResId = R.drawable.circle;
 			}
 
 			if (extras.containsKey(Cropper.CROP_AREA_VERTICAL_ICON_RES_ID))
@@ -165,7 +165,7 @@ public class CropImageActivity extends MonitoredActivity
 			}
 			else
 			{
-				verticalIconResId = R.drawable.camera_crop_width;
+				verticalIconResId = R.drawable.circle;
 			}
 
 			if (extras.containsKey(Cropper.CROP_AREA_BORDER_SIZE_DIMEN_RES_ID))

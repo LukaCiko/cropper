@@ -79,8 +79,8 @@ class HighlightView
 		mResizeDrawableWidth = resources.getDrawable(verticalIcon);
 		mResizeDrawableHeight = resources.getDrawable(horizontalIcon);
 		mResizeDrawableDiagonal = resources.getDrawable(horizontalIcon);
-		this.highlightColor = highlightColor;
-		this.highlightSelectedColor = highlightSelectedColor;
+		this.highlightColor = mContext.getResources().getColor(highlightColor);
+		this.highlightSelectedColor = mContext.getResources().getColor(highlightSelectedColor);
 	}
 
 	boolean mIsFocused;
@@ -170,7 +170,7 @@ class HighlightView
 
 			canvas.drawPath(path, mOutlinePaint);
 
-			if (mMode == ModifyMode.None || mMode == ModifyMode.Grow)
+			if (mMode == ModifyMode.Move || mMode == ModifyMode.Grow)
 			{
 
 				if (mCircle)
