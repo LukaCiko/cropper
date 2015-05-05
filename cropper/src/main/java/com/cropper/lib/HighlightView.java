@@ -31,6 +31,7 @@ class HighlightView
 	private static final String TAG = "HighlightView";
 	View mContext;  // The View displaying the image.
 
+	@SuppressWarnings("PointlessBitwiseExpression")
 	public static final int GROW_NONE = (1 << 0);
 	public static final int GROW_LEFT_EDGE = (1 << 1);
 	public static final int GROW_RIGHT_EDGE = (1 << 2);
@@ -92,13 +93,11 @@ class HighlightView
 
 	public void setFocus(boolean f)
 	{
-
 		mIsFocused = f;
 	}
 
 	public void setHidden(boolean hidden)
 	{
-
 		mHidden = hidden;
 	}
 

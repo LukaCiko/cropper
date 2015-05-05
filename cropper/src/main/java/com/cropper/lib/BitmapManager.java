@@ -43,7 +43,7 @@ class BitmapManager
 {
 	private static final String TAG = "BitmapManager";
 
-	private static enum State
+	private enum State
 	{
 		CANCEL, ALLOW
 	}
@@ -73,30 +73,6 @@ class BitmapManager
 			}
 			s = "thread state = " + s + ", options = " + mOptions;
 			return s;
-		}
-	}
-
-	public static class ThreadSet implements Iterable<Thread>
-	{
-		private final WeakHashMap<Thread, Object> mWeakCollection =
-			new WeakHashMap<Thread, Object>();
-
-		public void add(Thread t)
-		{
-
-			mWeakCollection.put(t, null);
-		}
-
-		public void remove(Thread t)
-		{
-
-			mWeakCollection.remove(t);
-		}
-
-		public Iterator<Thread> iterator()
-		{
-
-			return mWeakCollection.keySet().iterator();
 		}
 	}
 
@@ -144,26 +120,6 @@ class BitmapManager
 	{
 		ThreadStatus status = mThreadStatus.get(t);
 		status.mOptions = null;
-	}
-
-	/**
-	 * The following two methods are used to allow/cancel a set of threads
-	 * for bitmap decoding.
-	 */
-	public synchronized void allowThreadDecoding(ThreadSet threads)
-	{
-		for (Thread t : threads)
-		{
-			allowThreadDecoding(t);
-		}
-	}
-
-	public synchronized void cancelThreadDecoding(ThreadSet threads)
-	{
-		for (Thread t : threads)
-		{
-			cancelThreadDecoding(t);
-		}
 	}
 
 	/**

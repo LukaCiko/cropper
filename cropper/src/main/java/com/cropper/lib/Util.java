@@ -17,7 +17,10 @@ package com.cropper.lib;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.view.Surface;
 import android.view.Window;
@@ -31,23 +34,22 @@ final class Util
 {
 	private Util()
 	{
-
+		// Hiding constructor
 	}
 
-    /*
-     * Compute the sample size as a function of minSideLength
-     * and maxNumOfPixels.
-     * minSideLength is used to specify that minimal width or height of a bitmap.
-     * maxNumOfPixels is used to specify the maximal size in pixels that are tolerable
-     * in terms of memory usage.
-     *
-     * The function returns a sample size based on the constraints.
-     * Both size and minSideLength can be passed in as IImage.UNCONSTRAINED,
-     * which indicates no care of the corresponding constraint.
-     * The functions prefers returning a sample size that
-     * generates a smaller bitmap, unless minSideLength = IImage.UNCONSTRAINED.
-     */
-
+	/**
+	 * Compute the sample size as a function of minSideLength
+	 * and maxNumOfPixels.
+	 * minSideLength is used to specify that minimal width or height of a bitmap.
+	 * maxNumOfPixels is used to specify the maximal size in pixels that are tolerable
+	 * in terms of memory usage.
+	 * <p/>
+	 * The function returns a sample size based on the constraints.
+	 * Both size and minSideLength can be passed in as IImage.UNCONSTRAINED,
+	 * which indicates no care of the corresponding constraint.
+	 * The functions prefers returning a sample size that
+	 * generates a smaller bitmap, unless minSideLength = IImage.UNCONSTRAINED.
+	 */
 	public static Bitmap transform(Matrix scaler,
 	                               Bitmap source,
 	                               int targetWidth,
@@ -60,7 +62,7 @@ final class Util
 		if (!scaleUp && (deltaX < 0 || deltaY < 0))
 		{
 		    /*
-             * In this case the bitmap is smaller, at least in one dimension,
+		     * In this case the bitmap is smaller, at least in one dimension,
              * than the target.  Transform it by placing as much of the image
              * as possible into the target and leaving the top/bottom or
              * left/right (or both) black.
@@ -149,7 +151,6 @@ final class Util
 
 	public static void closeSilently(Closeable c)
 	{
-
 		if (c == null) return;
 		try
 		{
@@ -173,7 +174,6 @@ final class Util
 		{
 			public void run()
 			{
-
 				mActivity.removeLifeCycleListener(BackgroundJob.this);
 				if (mDialog.getWindow() != null) mDialog.dismiss();
 			}
@@ -182,7 +182,6 @@ final class Util
 		public BackgroundJob(MonitoredActivity activity, Runnable job,
 		                     Dialog dialog, Handler handler)
 		{
-
 			mActivity = activity;
 			mDialog = dialog;
 			mJob = job;
@@ -192,7 +191,6 @@ final class Util
 
 		public void run()
 		{
-
 			try
 			{
 				mJob.run();
@@ -215,22 +213,19 @@ final class Util
 		@Override
 		public void onActivityStopped(MonitoredActivity activity)
 		{
-
 			mDialog.hide();
 		}
 
 		@Override
 		public void onActivityStarted(MonitoredActivity activity)
 		{
-
 			mDialog.show();
 		}
 	}
 
-	public static void startBackgroundJob(MonitoredActivity activity,
-	                                      String title, String message, Runnable job, Handler handler)
+	public static void startBackgroundJob(MonitoredActivity activity, Runnable job, Handler handler)
 	{
-		// Make the progress dialog uncancelable, so that we can gurantee
+		// Make the progress dialog uncancelable, so that we can guarantee
 		// the thread will be done before the activity getting destroyed.
 		Dialog d = new Dialog(activity);
 		d.getWindow().setBackgroundDrawable(activity.getResources().getDrawable(android.R.color.transparent));
@@ -239,15 +234,6 @@ final class Util
 		d.setCancelable(false);
 		d.show();
 		new Thread(new BackgroundJob(activity, job, d, handler)).start();
-	}
-
-	// Returns Options that set the puregeable flag for Bitmap decode.
-	public static BitmapFactory.Options createNativeAllocOptions()
-	{
-
-		BitmapFactory.Options options = new BitmapFactory.Options();
-		//options.inNativeAlloc = true;
-		return options;
 	}
 
 	// Thong added for rotate

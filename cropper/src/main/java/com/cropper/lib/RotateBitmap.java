@@ -30,12 +30,6 @@ class RotateBitmap
 		mRotation = 0;
 	}
 
-	public RotateBitmap(Bitmap bitmap, int rotation)
-	{
-		mBitmap = bitmap;
-		mRotation = rotation % 360;
-	}
-
 	public void setRotation(int rotation)
 	{
 		mRotation = rotation;
