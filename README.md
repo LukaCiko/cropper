@@ -4,6 +4,8 @@ Image cropping library for Android.
 
 Cropper is a simple and customizable image cropping library for Android. It has an modern design, supports image rotation and two-finger resizing. Cropper supports all versions from Froyo.
 
+![](logo.png)
+
 ## Download
 
 Coming soon!
@@ -46,7 +48,8 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data)
 
 ## Thanks
 
-Cropper is based on [Cropimage](https://github.com/biokys/cropimage) by [Jan Muller](https://github.com/biokys).
+* Cropper is based on [Cropimage](https://github.com/biokys/cropimage) by [Jan Muller](https://github.com/biokys).
+* [Miroslav Rajković](http://www.miroslav-rajkovic.com/) for making the [logo](logo.png).
 
 ## License
 
