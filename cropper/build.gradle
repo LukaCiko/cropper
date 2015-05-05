@@ -10,15 +10,23 @@ buildscript {
 apply plugin: 'com.android.library'
 apply plugin: 'com.droidtitan.lintcleaner'
 
+ext {
+    // Used by android-release-aar.gradle
+    PUBLISH_GROUP_ID = 'com.lukaciko.cropper'
+    PUBLISH_ARTIFACT_ID = 'cropper'
+    PUBLISH_VERSION = '0.14'
+}
+
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
+    resourcePrefix "cropper_"
 
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 22
         versionCode 1
-        versionName "0.1"
+        versionName PUBLISH_VERSION
     }
 
     lintOptions {
@@ -29,3 +37,6 @@ android {
 dependencies {
     compile 'com.android.support:support-annotations:20.0.0'
 }
+
+// Build by running: gradle clean build generateRelease
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
