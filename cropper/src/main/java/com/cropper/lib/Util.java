@@ -1,6 +1,6 @@
-package com.cropper.lib;
 /*
  * Copyright (C) 2009 The Android Open Source Project
+ * Copyright 2015 Luka Cindro
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@ package com.cropper.lib;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package com.cropper.lib;
 
 import android.app.Activity;
 import android.app.Dialog;

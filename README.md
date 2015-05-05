@@ -48,12 +48,12 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data)
 
 ## Thanks
 
-* Cropper is based on [Cropimage](https://github.com/biokys/cropimage) by [Jan Muller](https://github.com/biokys).
+* [Jan Muller](https://github.com/biokys) and other contributors to [Cropimage](https://github.com/biokys/cropimage), on which Cropper is based on.
 * [Miroslav Rajković](http://www.miroslav-rajkovic.com/) for making the [logo](logo.png).
 
 ## License
 
-    Copyright 2015 Klemen Kresnik, Luka Cindro
+    Copyright 2015 Luka Cindro
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
