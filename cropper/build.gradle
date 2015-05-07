@@ -14,7 +14,7 @@ ext {
     // Used by android-release-aar.gradle
     PUBLISH_GROUP_ID = 'com.lukaciko.cropper'
     PUBLISH_ARTIFACT_ID = 'cropper'
-    PUBLISH_VERSION = '0.14'
+    PUBLISH_VERSION = '0.1'
 }
 
 android {

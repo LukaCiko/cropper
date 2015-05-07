@@ -8,7 +8,19 @@ Cropper is a simple and customizable image cropping library for Android. It has 
 
 ## Download
 
-Coming soon!
+To import Cropper, add the following dependency to your Gradle build script:
+
+```groovy
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+dependencies {
+    compile 'com.lukaciko.cropper:cropper:0.1@aar'
+}
+```
 
 ## How do I use Cropper?
 
