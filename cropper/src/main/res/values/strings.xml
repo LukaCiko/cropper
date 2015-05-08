@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="saving_image">Saving image</string>
-    <string name="preparing_card">Preparing card</string>
-    <string name="no_storage_card">No storage card</string>
-    <string name="not_enough_space">Not enough space</string>
+    <string name="cropper_saving_image">Saving image</string>
+    <string name="cropper_preparing_card">Preparing card</string>
+    <string name="cropper_no_storage_card">No storage card</string>
+    <string name="cropper_not_enough_space">Not enough space</string>
 </resources>

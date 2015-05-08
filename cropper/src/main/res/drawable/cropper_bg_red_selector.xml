@@ -3,8 +3,8 @@
 
 	<item
 		android:state_pressed="true"
-		android:drawable="@drawable/bg_red_pressed"/>
+		android:drawable="@drawable/cropper_bg_red_pressed"/>
 
-	<item android:drawable="@drawable/bg_red"/>
+	<item android:drawable="@drawable/cropper_bg_red"/>
 
 </selector>

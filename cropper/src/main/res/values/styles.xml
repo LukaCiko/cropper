@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<style name="ConfirmButton" parent="android:Widget.ImageButton">
+	<style name="cropper_ConfirmButton" parent="android:Widget.ImageButton">
 		<item name="android:scaleType">centerInside</item>
-		<item name="android:src">@drawable/ic_done_white_24dp</item>
-		<item name="android:background">@drawable/bg_green_selector</item>
+		<item name="android:src">@drawable/cropper_ic_done_white_24dp</item>
+		<item name="android:background">@drawable/cropper_bg_green_selector</item>
 	</style>
 
-	<style name="CancelButton" parent="android:Widget.ImageButton">
+	<style name="cropper_CancelButton" parent="android:Widget.ImageButton">
 		<item name="android:scaleType">centerInside</item>
-		<item name="android:src">@drawable/ic_close_white_24dp</item>
-		<item name="android:background">@drawable/bg_red_selector</item>
+		<item name="android:src">@drawable/cropper_ic_close_white_24dp</item>
+		<item name="android:background">@drawable/cropper_bg_red_selector</item>
 	</style>
 
-	<style name="NeutralButton" parent="android:Widget.ImageButton">
+	<style name="cropper_NeutralButton" parent="android:Widget.ImageButton">
 		<item name="android:scaleType">centerInside</item>
-		<item name="android:background">@drawable/bg_blue_selector</item>
+		<item name="android:background">@drawable/cropper_bg_blue_selector</item>
 	</style>
 </resources>

@@ -5,7 +5,7 @@
 
 	<com.cropper.lib.CropImageView
 		android:id="@+id/cropper_image"
-		android:background="@color/dark_blue"
+		android:background="@color/cropper_dark_blue"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"/>
 
@@ -23,7 +23,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="35"
 			android:layout_marginRight="8dp"
-			style="@style/CancelButton"/>
+			style="@style/cropper_CancelButton"/>
 
 		<ImageButton
 			android:id="@+id/croppper_rotate_left"
@@ -31,8 +31,8 @@
 			android:layout_height="match_parent"
 			android:layout_weight="15"
 			android:layout_marginRight="8dp"
-			android:src="@drawable/ic_rotate_left_white_24dp"
-			style="@style/NeutralButton"/>
+			android:src="@drawable/cropper_ic_rotate_left_white_24dp"
+			style="@style/cropper_NeutralButton"/>
 
 		<ImageButton
 			android:id="@+id/cropper_rotate_right"
@@ -40,15 +40,15 @@
 			android:layout_height="match_parent"
 			android:layout_weight="15"
 			android:layout_marginRight="8dp"
-			android:src="@drawable/ic_rotate_right_white_24dp"
-			style="@style/NeutralButton"/>
+			android:src="@drawable/cropper_ic_rotate_right_white_24dp"
+			style="@style/cropper_NeutralButton"/>
 
 		<ImageButton
 			android:id="@+id/cropper_save"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="35"
-			style="@style/ConfirmButton"/>
+			style="@style/cropper_ConfirmButton"/>
 
 	</LinearLayout>
 

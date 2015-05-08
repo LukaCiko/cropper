@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<declare-styleable name="CropImageView">
-		<attr name="highlightColor" format="color"/>
-		<attr name="highlightSelectedColor" format="color"/>
-		<attr name="highlightBorderSize" format="dimension"/>
-		<attr name="highlightVerticalIcon" format="integer"/>
-		<attr name="highlightHorizontalIcon" format="integer"/>
+	<declare-styleable name="cropper_CropImageView">
+		<attr name="cropper_highlightColor" format="color"/>
+		<attr name="cropper_highlightSelectedColor" format="color"/>
+		<attr name="cropper_highlightBorderSize" format="dimension"/>
+		<attr name="cropper_highlightVerticalIcon" format="integer"/>
+		<attr name="cropper_highlightHorizontalIcon" format="integer"/>
 	</declare-styleable>
 </resources>

@@ -90,7 +90,7 @@ public class CropImageActivity extends MonitoredActivity
 		}
 		else
 		{
-			setContentView(R.layout.cropimage);
+			setContentView(R.layout.cropper_cropimage);
 		}
 
 		mImageView = (CropImageView) findViewById(R.id.cropper_image);
@@ -144,7 +144,7 @@ public class CropImageActivity extends MonitoredActivity
 			}
 			else
 			{
-				highlightSelectedColorResId = R.color.green;
+				highlightSelectedColorResId = R.color.cropper_green;
 			}
 
 			if (extras.containsKey(Cropper.CROP_AREA_HORIZONTAL_ICON_RES_ID))
@@ -153,7 +153,7 @@ public class CropImageActivity extends MonitoredActivity
 			}
 			else
 			{
-				horizontalIconResId = R.drawable.circle;
+				horizontalIconResId = R.drawable.cropper_circle;
 			}
 
 			if (extras.containsKey(Cropper.CROP_AREA_VERTICAL_ICON_RES_ID))
@@ -162,7 +162,7 @@ public class CropImageActivity extends MonitoredActivity
 			}
 			else
 			{
-				verticalIconResId = R.drawable.circle;
+				verticalIconResId = R.drawable.cropper_circle;
 			}
 
 			if (extras.containsKey(Cropper.CROP_AREA_BORDER_SIZE_DIMEN_RES_ID))
@@ -171,7 +171,7 @@ public class CropImageActivity extends MonitoredActivity
 			}
 			else
 			{
-				borderSizeResId = R.dimen.border_size;
+				borderSizeResId = R.dimen.cropper_border_size;
 			}
 
 			Log.i(TAG, "Output X " + mOutputX + ", output Y " + mOutputY);
@@ -604,16 +604,16 @@ public class CropImageActivity extends MonitoredActivity
 			String state = Environment.getExternalStorageState();
 			if (state.equals(Environment.MEDIA_CHECKING))
 			{
-				noStorageText = activity.getString(R.string.preparing_card);
+				noStorageText = activity.getString(R.string.cropper_preparing_card);
 			}
 			else
 			{
-				noStorageText = activity.getString(R.string.no_storage_card);
+				noStorageText = activity.getString(R.string.cropper_no_storage_card);
 			}
 		}
 		else if (remaining < 1)
 		{
-			noStorageText = activity.getString(R.string.not_enough_space);
+			noStorageText = activity.getString(R.string.cropper_not_enough_space);
 		}
 
 		if (noStorageText != null)

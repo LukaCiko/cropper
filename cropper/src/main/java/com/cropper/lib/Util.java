@@ -232,7 +232,7 @@ final class Util
 		Dialog d = new Dialog(activity);
 		d.getWindow().setBackgroundDrawable(activity.getResources().getDrawable(android.R.color.transparent));
 		d.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		d.setContentView(R.layout.progress_layout);
+		d.setContentView(R.layout.cropper_progress_layout);
 		d.setCancelable(false);
 		d.show();
 		new Thread(new BackgroundJob(activity, job, d, handler)).start();
