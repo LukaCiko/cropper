@@ -1,5 +1,7 @@
 # Cropper
 
+[![Download](https://api.bintray.com/packages/lukaciko/maven/com.lukaciko.cropper%3Acropper/images/download.svg) ](https://bintray.com/lukaciko/maven/com.lukaciko.cropper%3Acropper/_latestVersion)
+
 Image cropping library for Android.
 
 Cropper is a simple and customizable image cropping library for Android. It has an modern design, supports image rotation and two-finger resizing. Cropper supports all versions from Froyo.
